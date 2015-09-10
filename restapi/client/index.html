@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=utf-8 />
+    <title>Set marker</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script type="text/javascript" src="js/lib/jquery.js"></script>
+    <script type="text/javascript" src="js/lib/mapbox.js"></script>
+    <script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/lib/jasny-bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/lib/mapbox.css">
+    <link rel="stylesheet" type="text/css" href="css/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/lib/jasny-bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <style>
+    body { margin:0; padding:0; }
+    #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+  </head>
+  <body data-gclp-initialized="true" data-gistbox-initialized="true" style="">
+    <div class="navmenu navmenu-default navmenu-fixed-left in">
+      <a class="navmenu-brand" href="#">Add Data</a>
+      <form id="generateData" class="form-horizontal">
+        <div class="form-group">
+          <div class="row">
+            <label for="drive_id" class="col-sm-5 control-label">Fahrt</label>
+            <div class="col-sm-7"><input name="drive_id" id="form_drive_id" value="0"/></div>
+          </div>
+          <div class="row">
+            <label for="lat" class="col-sm-5 control-label">latitude</label>
+            <div class="col-sm-7"><input name="lat" id="form_lat" value=""/></div>
+          </div>
+          <div class="row">
+            <label for="lng" class="col-sm-5 control-label">longitude</label>
+            <div class="col-sm-7"><input id="form_lng" name="lng" value=""/></div>
+          </div>
+          <div class="row">
+            <label for="timestamp" class="col-sm-5 control-label">timestamp</label>
+            <div class="col-sm-7"><input name="timestamp" type="date" placeholder="leave empty to use time now" value=""/></div>
+          </div> 
+          <div class="row">
+            <label for="timestamp" class="col-sm-5 control-label">timestamp</label>
+            <div class="col-sm-7"><input name="timestamp" type="date" placeholder="leave empty to use time now" value=""/></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <label for="speed" class="col-sm-5 control-label">speed</label>
+            <div class="col-sm-7"><input name="speed" value=""/></div>
+          </div>
+          <div class="row">
+            <label for="height" class="col-sm-5 control-label">height</label>
+            <div class="col-sm-7"><input name="height" value=""/></div>
+          </div>
+
+          <div class="row">
+            <label for="attr" class="col-sm-5 control-label">attr</label>
+            <div class="col-sm-7"><input name="attr" value=""/></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <label for="acc_x" class="col-sm-5 control-label">acc_x</label>
+            <div class="col-sm-7"><input name="acc_x" value=""/></div>
+          </div>
+          <div class="row">
+            <label for="acc_y" class="col-sm-5 control-label">acc_y</label>
+            <div class="col-sm-7"><input name="acc_y" value=""/></div>
+          </div>
+          <div class="row">
+            <label for="acc_z" class="col-sm-5 control-label">acc_z</label>
+            <div class="col-sm-7"><input name="acc_z" value=""/></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <label for="gyr_x" class="col-sm-5 control-label">gyr_x</label>
+            <div class="col-sm-7"><input name="gyr_x" value=""/></div>
+          </div>
+          
+          <div class="row">
+            <label for="gyr_y" class="col-sm-5 control-label">gyr_y</label>
+            <div class="col-sm-7"><input name="gyr_y" value=""/></div>
+          </div>
+          
+          <div class="row">
+            <label for="gyr_z" class="col-sm-5 control-label">gyr_z</label>
+            <div class="col-sm-7"><input name="gyr_z" value=""/></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <label for="acc2_x" class="col-sm-5 control-label">acc2_x</label>
+            <div class="col-sm-7"><input name="acc2_x" value=""/></div>
+          </div>
+          
+          <div class="row">
+            <label for="acc2_y" class="col-sm-5 control-label">acc2_y</label>
+            <div class="col-sm-7"><input name="acc2_y" value=""/></div>
+          </div>
+          
+          <div class="row">
+            <label for="acc2_z" class="col-sm-5 control-label">acc2_z</label>
+            <div class="col-sm-7"><input name="acc2_z" value=""/></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <label for="gyr2_x" class="col-sm-5 control-label">gyr2_x</label>
+            <div class="col-sm-7"><input name="gyr2_x" value=""/></div>
+          </div>
+          
+          <div class="row">
+            <label for="gyr2_y" class="col-sm-5 control-label">gyr2_y</label>
+            <div class="col-sm-7"><input name="gyr2_y" value=""/></div>
+          </div>
+          
+          <div class="row">
+            <label for="gyr2_z" class="col-sm-5 control-label">gyr2_z</label>
+            <div class="col-sm-7"><input name="gyr2_z" value=""/></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-6">
+            <button id="resetValues" class="btn">Reset</button>
+          </div>
+          <div class="col-sm-6">
+            <button id="randomizeValues" class="btn">Randomisieren</button>
+          </div>
+          <div class="col-sm-12">
+            <button id="saveValues" class="btn btn-default">Speichern</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="canvas canvas-slid">
+      <div class="navbar navbar-default navbar-fixed-top canvas-slid">
+        <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-recalc="false" data-target=".navmenu" data-canvas=".canvas">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="container">
+        <div id='map'></div>
+        </div><!-- /.container -->
+      </div>
+          <script type="text/javascript" src="js/script.js"></script>
+    </body>
+  </html>

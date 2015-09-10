@@ -1,0 +1,33 @@
+data_db:  
+  image: busybox
+  volumes:
+    - /var/lib/postgresql
+db:
+  build: ./postgis
+  volumes_from: 
+  - data_db
+  ports:
+  - "25432:5432"
+  environment:
+  - USERNAME=docker
+  - PASS=docker
+data_geoserver:  
+  image: busybox
+  volumes:
+    - /var/lib/geoserver:/opt/geoserver/data_dir
+geoserver:
+  image: kartoza/geoserver
+  volumes_from: 
+  - data_geoserver
+  ports:
+  - "8090:8080"
+  links:
+  - db:db
+  environment:
+  - USERNAME=docker
+  - PASS=docker
+rest:  
+  build: restapi/.
+  ports:
+  - "8080:8080"
+  - "8081:8081"

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=utf-8 />
+    <title>Overview of provided Services</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <style>
+    body { margin:0; padding:1em; }
+    p {margin: 0.2em 0em}
+    div {margin-bottom: 2em}
+    b {display: inline-block; margin: 0 0.5em;}
+    </style>
+  </head>
+  <body data-gclp-initialized="true" data-gistbox-initialized="true" style="">
+    <h1>Overview of the provided Services</h1>
+    <div>
+      <a href="http://192.168.99.100:8090/geoserver/web/" target="_blank">Geoserver</a>
+      <p><b>User:</b><i>admin</i>,<b>password:</b><i>geoserver</i></p>
+    </div>
+    <div>
+      <a href="http://192.168.99.100:8080/client" target="_blank">REST Test Client</a>
+    </div> 
+    <div>
+      <a>REST API</a>
+      <p><b>Example Request</b>http://localhost:8081/api/generic/data_points</p>
+    </div> 
+    <div>
+      <a>Database Connection</a>
+      <p><b>Host:</b><i>192.168.99.100</i>,<b>Port:</b><i>25432</i>, <b>Username:</b><i>docker</i>, <b>Password:</b><i>docker</i></p>
+      <p><b>psql Verbindung</b>psql -h 192.168.99.100 -U docker -p 25432  postgres</p>
+    </div>
+
+    <p style="text-align: right">Autor:  <a href="mailto:nico.kreiling@gmail.com">Nico Kreiling</a><br/> Stand: 10.9.2015</p>
+
+  </body>
+</html>
