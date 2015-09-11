@@ -1,4 +1,5 @@
 var express = require('express');
+var path = require('path');
 
 // Constants
 var PORT = 8080;
@@ -8,13 +9,13 @@ var app = express();
 
 app.use(express.static(__dirname + '/client'))
 app.get('/info', function (req, res) {
-  res.sendfile('info.html');
+  res.sendfile(path.resolve('restapi/info.html'));
 });
 app.get('/client', function (req, res) {
-  res.sendfile('client/index.html');
+  res.sendfile(path.resolve('restapi/client/index.html'));
 });
 app.get('*', function (req, res) {
-  res.sendfile('info.html');
+  res.sendfile(path.resolve('restapi/info.html'));
 });
 
 app.listen(PORT);

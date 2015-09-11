@@ -8,7 +8,7 @@ ln -F -f bower_components/mapbox.js/images client/css/lib/images
 
 ln -F -f bower_components/jquery/dist/jquery.js client/js/lib/jquery.js
 
-ln -F -f bower_components/fontawesome/css/font-awesome.css client/js/lib/fontawesome.css
+ln -F -f bower_components/fontawesome/css/font-awesome.css client/css/lib/fontawesome.css
 ln -F -f bower_components/fontawesome/fonts client/fonts
 
 ln -F -f bower_components/bootstrap/dist/css/bootstrap.min.css client/css/lib/bootstrap.min.css
