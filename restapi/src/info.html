@@ -53,10 +53,14 @@ dockerH2O <- h2o.init(ip = "<span class="host">192.168.59.103</span>", port = 54
     var search_length = searchterm.length;
 
     $('a').filter(function(){
-      console.log($(this).attr('href'))
       if ($(this).attr('href').indexOf(searchterm) >= 0){
         $(this).attr("href",$(this).attr("href").replace(searchterm,ip));
-        console.log($(this).attr("href"));
+      } 
+    })
+
+    $('.host').filter(function(){
+      if ($(this).text().indexOf(searchterm) >= 0){
+        $(this).text($(this).text().replace(searchterm,ip));
       } 
     })
     </script>

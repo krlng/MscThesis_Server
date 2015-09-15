@@ -9,10 +9,13 @@ var app = express();
 
 app.use(express.static(__dirname + '/src',{index: 'info.html'}))
 app.get('/', function (req, res) {
-  res.sendfile(path.resolve('restapi/src/info.html'));
+  res.sendfile(path.resolve('src/info.html'));
 });
 app.get('/client', function (req, res) {
-  res.sendfile(path.resolve('restapi/src/index.html'));
+  res.sendfile(path.resolve('src/client.html'));
+});
+app.get('/info', function (req, res) {
+  res.sendfile(path.resolve('src/info.html'));
 });
 
 app.listen(PORT);
