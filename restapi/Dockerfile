@@ -14,8 +14,9 @@ COPY . /src
 # Install app dependencies
 WORKDIR /src
 RUN pwd
+RUN npm install
+RUN bower --allow-root install
 RUN ls
-RUN npm install; bower --allow-root install;
 RUN chmod 0755 setup.sh
 RUN ./setup.sh
 
