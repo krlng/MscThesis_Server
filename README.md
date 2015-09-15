@@ -1,28 +1,23 @@
 # Installation
-_Install pre-requireties_
+_Pre-requireties_
 ```shell
 sudo apt-get update
 sudo apt-get install git
-curl -sSL https://get.docker.com/ | sh
 ```
+[Install docker](https://docs.docker.com/installation/ubuntulinux/)
+[Install docker-compose](https://docs.docker.com/compose/install/)
+
 
 _Setup project_
 ```shell
 git clone https://github.com/nik-ffm/MscThesis_Server.git
+cd ~/MscThesis_Server
 docker-compose up
 ```
 
 Get the IP of your machine using `bocker-machine ip default` and open it in the browser. You will the an overview page telling you about all available services
 
 # Development Comments
-## Manual builds
-docker build -t nico/postgis .
-
-## Create Container
-docker run --rm -P --name pg_test nico/postgis  
-SET IP boot2docker ip
-docker port pg_test
-psql -h 192.168.59.103 -p 49160 -d docker -U docker --password
 
 ## Change security settings of GeoServer
 ```

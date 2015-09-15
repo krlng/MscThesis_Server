@@ -4,8 +4,9 @@ MAINTAINER Nico Kreiling<nico.kreiling@gmail.com>
 # Enable EPEL for Node.js
 RUN     rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
 # Install Node.js and npm
+RUN     yum install git
 RUN     yum install -y npm
-RUN 		npm install -g bower
+RUN 	npm install -g bower
 
 # Bundle app source
 COPY . /src
