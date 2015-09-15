@@ -7,15 +7,12 @@ var PORT = 8080;
 // App
 var app = express();
 
-app.use(express.static(__dirname + '/client'))
-app.get('/info', function (req, res) {
-  res.sendfile(path.resolve('restapi/info.html'));
+app.use(express.static(__dirname + '/src',{index: 'info.html'}))
+app.get('/', function (req, res) {
+  res.sendfile(path.resolve('restapi/src/info.html'));
 });
 app.get('/client', function (req, res) {
-  res.sendfile(path.resolve('restapi/client/index.html'));
-});
-app.get('*', function (req, res) {
-  res.sendfile(path.resolve('restapi/info.html'));
+  res.sendfile(path.resolve('restapi/src/index.html'));
 });
 
 app.listen(PORT);

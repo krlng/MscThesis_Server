@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=utf-8 />
+    <title>Overview of provided Services</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script type="text/javascript" src="js/lib/jquery.js"></script>
+    <style>
+      body { margin:0; padding:1em; }
+      p {margin: 0.2em 0em}
+      div {margin-bottom: 2em}
+      b {display: inline-block; margin: 0 0.5em;}
+
+    </style>
+  </head>
+  <body data-gclp-initialized="true" data-gistbox-initialized="true" style="">
+    <h1>Overview of the provided Services</h1>
+    <div>
+      <h2>Geoserver</h2>
+      <b></b><a href="http://localhost:8090/geoserver/web/" target="_blank">Web-GUI</a>
+      <p><b>User:</b><i>admin</i>,<b>password:</b><i>geoserver</i></p>
+    </div>
+    <div>
+      <h2>REST API</h2>
+      <p><b>Example Request</b><a href="http://localhost:8081/api/generic/data_points">GET // Data_points</a></p>
+      <p><b>GUI:</b><a href="http://localhost:8080/client" target="_blank">REST Test Client</a></p>
+    </div> 
+    <div>
+      <h2>H2O Interface</h2>
+      <p><b>Flow:</b><a href="http://localhost:54321/">Flow-Web-Gui</a>"</p>
+
+      <b>R-Connection</b><br/>
+      <code>library(h2o)<br/>
+dockerH2O <- h2o.init(ip = "<span class="host">192.168.59.103</span>", port = 54321)</code>
+
+    </div> 
+    <div>
+      <h2>Database Connection</h2>
+      <p><b>Host:</b><i><span class="host">localhost</span></i>,<b>Port:</b><i>25432</i>, <b>Username:</b><i>docker</i>, <b>Password:</b><i>docker</i></p>
+      <p><b>PSQL-Verbindung</b>psql -h <span class="host">localhost</span> -U docker -p 25432  postgres</p>
+    </div>
+
+    <div>
+      <img src="img/GitHub-Mark-32px.png" style="float:left"/>
+      <a href="https://github.com/nik-ffm/MscThesis_Server" target="_blank" style="display: inline-block; padding: 0.5em">Assign Issues on Github</a>
+    </div>
+
+    <p style="text-align: right">Autor:  <a href="mailto:nico.kreiling@gmail.com">Nico Kreiling</a><br/> Stand: 15.9.2015</p>
+
+    <script type="text/javascript">
+    var searchterm = 'localhost';
+    var ip = location.href.split('//')[1].split(':')[0];
+    var search_length = searchterm.length;
+
+    $('a').filter(function(){
+      console.log($(this).attr('href'))
+      if ($(this).attr('href').indexOf(searchterm) >= 0){
+        $(this).attr("href",$(this).attr("href").replace(searchterm,ip));
+        console.log($(this).attr("href"));
+      } 
+    })
+    </script>
+  </body>
+</html>
