@@ -7,6 +7,7 @@ RUN     rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-
 RUN     yum -y install git
 RUN     yum install -y npm
 RUN 	npm install -g bower
+RUN     git config --global url."https://".insteadOf git:// 
 
 # Bundle app source
 COPY . /src
