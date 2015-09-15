@@ -1,0 +1,5 @@
+data_db:  
+  build: .
+  ports:
+  - "54321:54321"
+  command: java -Xmx1g -jar /opt/h2o.jar
