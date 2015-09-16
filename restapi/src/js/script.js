@@ -8,8 +8,8 @@
      var mm = (this.getMonth()+1).toString(); // getMonth() is zero-based
      var dd  = this.getDate().toString();
      var hh  = this.getHours().toString();
-     var mm  = this.getMinutes().toString();
-     return yyyy + '-'+(mm[1]?mm:"0"+mm[0]) +'-'+ (dd[1]?dd:"0"+dd[0])+' '+(hh[1]?hh:"0"+hh[0])+':'+(mm[1]?mm:"0"+mm[0]); // padding
+     var min  = this.getMinutes().toString();
+     return yyyy + '-'+(mm[1]?mm:"0"+mm[0]) +'-'+ (dd[1]?dd:"0"+dd[0])+' '+(hh[1]?hh:"0"+hh[0])+':'+(min[1]?min:"0"+min[0]); // padding
     };
 
 
@@ -47,7 +47,7 @@
  // If the user chooses not to allow their location
  // to be shared, display an error message.
  map.on('locationerror', function() {
-   alert('Fehler beim Laden')
+   console.warn('Fehler beim Laden >> Keine Internetverbindung?')
    var marker = L.marker(new L.LatLng(49, 8.37), {
      icon: L.mapbox.marker.icon({
        'marker-color': 'ff8888'
@@ -73,7 +73,10 @@
        case 'lat':
          $(this).val(Math.random() * 2 + 48);
          break;
-       case 'timestamp':
+       case 'date':
+         $(this).val();
+         break;
+       case 'time':
          $(this).val();
          break;
        case 'lng':
@@ -118,6 +121,8 @@
    delete o.time;
    delete o.date;
    o.timestamp = o.timestamp.yyyymmdd();
+   o.position_type = 0;
+   o.interpolated_point = 0;
 
    var DBConnection = $('#DBConnection').val();
 

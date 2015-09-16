@@ -11,7 +11,7 @@ RUN 	npm install -g bower
 RUN     git config --global url."https://".insteadOf git:// 
 
 # Bundle app source
-COPY . /src
+#COPY . /src
 
 # Install app dependencies
 WORKDIR /src

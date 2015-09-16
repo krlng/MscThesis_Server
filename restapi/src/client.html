@@ -45,8 +45,8 @@
             <div class="col-sm-7"><input name="speed" value=""/></div>
           </div>
           <div class="row">
-            <label for="height" class="col-sm-5 control-label">height</label>
-            <div class="col-sm-7"><input name="height" value=""/></div>
+            <label for="altitude" class="col-sm-5 control-label">altitude</label>
+            <div class="col-sm-7"><input name="altitude" value=""/></div>
           </div>
 
           <div class="row">
@@ -137,8 +137,11 @@
         <span class="icon-bar"></span>
         </button>
 
-        <label for="DBConnection"></label>
-        <input name="DBConnection" id="DBConnection" val="http://localhost:8081/api/generic/data_points"/>
+        <div class="form-group" style="padding: 10px; margin: 0;">
+          <label for="DBConnection">Datenbank</label>
+          <input name="DBConnection" class="form-control" id="DBConnection" value="http://localhost:8081/api/generic/data_points" style="width: 350px; display: inline-block"/>
+        </div>
+
       </div>
       <div class="container">
         <div id='map'></div>

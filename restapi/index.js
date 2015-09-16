@@ -4,6 +4,11 @@ var path = require('path');
 // Constants
 var PORT = 8080;
 
+console.log('Parameters passen:')
+process.argv.forEach(function (val, index, array) {
+  console.log(index + ': ' + val);
+})
+
 // App
 var app = express();
 
@@ -44,8 +49,8 @@ server.use(cors.actual);
 // and a server connection string
 pgRestify.initialize({
   server: server,
-  pgConfig: 'pg://nicokreiling:@localhost/testfahrten'
   //pgConfig: 'pg://nicokreiling:@localhost/testfahrten'
+  pgConfig: 'pg://docker:@192.168.99.100:5432/testfahrten'
   //pgConfig: 'pg://postgres/mysecretpassword@192.168.99.100:5432/postgres'
 }, function(err, pgRestifyInstance) {
 

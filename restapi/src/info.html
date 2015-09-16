@@ -14,16 +14,17 @@
     </style>
   </head>
   <body data-gclp-initialized="true" data-gistbox-initialized="true" style="">
-    <h1>Overview of the provided Services</h1>
+    <h1>Overview of the provided Services2</h1>
     <div>
       <h2>Database Connection</h2>
       <p><b>Host:</b><i><span class="host">localhost</span></i>,<b>Port:</b><i>5432</i>, <b>Username:</b><i>docker</i>, <b>Password:</b><i>docker</i></p>
-      <p><b>PSQL-Verbindung</b>psql -h <span class="host">localhost</span> -U docker -p 5432  postgres</p>
-      <p><b>Online Interface</b><a href="http://localhost:81">Adminer</a></p> (Credentials same as for the database)
+      <p><b>PSQL-Verbindung</b><code>psql -h <span class="host">localhost</span> -U docker -p 5432  postgres</p></code>
+      <p><b>Connection string</b><code> pg://docker:docker@<span class="host">localhost</span>/testfahrten</p></code>
+      <p><b>Online Interface</b><a href="http://localhost:81" target="_blank">Adminer</a></p> (Credentials same as for the database)
     </div>
     <div>
       <h2>REST API</h2>
-      <p><b>Example Request</b><a href="http://localhost:8081/api/generic/data_points">GET // Data_points</a></p>
+      <p><b>Example Request</b><a href="http://localhost:8081/api/generic/data_points" target="_blank">GET // Data_points</a></p>
       <p><b>GUI:</b><a href="http://localhost/client" target="_blank">REST Test Client</a></p>
     </div> 
     <div>
@@ -33,7 +34,7 @@
     </div>
     <div>
       <h2>H2O Interface</h2>
-      <p><b>Flow:</b><a href="http://localhost:54321/">Flow-Web-Gui</a>"</p>
+      <p><b>Flow:</b><a href="http://localhost:54321/" target="_blank">Flow-Web-Gui</a>"</p>
 
       <b>R-Connection</b><br/>
       <code>library(h2o)<br/>
