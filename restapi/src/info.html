@@ -16,15 +16,21 @@
   <body data-gclp-initialized="true" data-gistbox-initialized="true" style="">
     <h1>Overview of the provided Services</h1>
     <div>
-      <h2>Geoserver</h2>
-      <b></b><a href="http://localhost:8090/geoserver/web/" target="_blank">Web-GUI</a>
-      <p><b>User:</b><i>admin</i>,<b>password:</b><i>geoserver</i></p>
+      <h2>Database Connection</h2>
+      <p><b>Host:</b><i><span class="host">localhost</span></i>,<b>Port:</b><i>5432</i>, <b>Username:</b><i>docker</i>, <b>Password:</b><i>docker</i></p>
+      <p><b>PSQL-Verbindung</b>psql -h <span class="host">localhost</span> -U docker -p 5432  postgres</p>
+      <p><b>Online Interface</b><a href="http://localhost:81">Adminer</a></p> (Credentials same as for the database)
     </div>
     <div>
       <h2>REST API</h2>
       <p><b>Example Request</b><a href="http://localhost:8081/api/generic/data_points">GET // Data_points</a></p>
-      <p><b>GUI:</b><a href="http://localhost:8080/client" target="_blank">REST Test Client</a></p>
+      <p><b>GUI:</b><a href="http://localhost/client" target="_blank">REST Test Client</a></p>
     </div> 
+    <div>
+      <h2>Geoserver</h2>
+      <b></b><a href="http://localhost:8090/geoserver/web/" target="_blank">Web-GUI</a>
+      <p><b>User:</b><i>admin</i>,<b>password:</b><i>geoserver</i></p>
+    </div>
     <div>
       <h2>H2O Interface</h2>
       <p><b>Flow:</b><a href="http://localhost:54321/">Flow-Web-Gui</a>"</p>
@@ -34,11 +40,6 @@
 dockerH2O <- h2o.init(ip = "<span class="host">192.168.59.103</span>", port = 54321)</code>
 
     </div> 
-    <div>
-      <h2>Database Connection</h2>
-      <p><b>Host:</b><i><span class="host">localhost</span></i>,<b>Port:</b><i>25432</i>, <b>Username:</b><i>docker</i>, <b>Password:</b><i>docker</i></p>
-      <p><b>PSQL-Verbindung</b>psql -h <span class="host">localhost</span> -U docker -p 25432  postgres</p>
-    </div>
 
     <div>
       <img src="img/GitHub-Mark-32px.png" style="float:left"/>

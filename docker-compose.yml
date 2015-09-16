@@ -8,11 +8,16 @@ db:
   volumes_from: 
   - data_db
   ports:
-  - "25432:5432"
+  - "5432:5432"
   environment:
   - USERNAME=docker
   - PASS=docker
   container_name: db
+adminer:
+  image: clue/adminer
+  ports:
+  - "81:80"
+  container_name: adminer
 data_geoserver:  
   image: busybox
   volumes:
@@ -36,6 +41,8 @@ rest:
   - "80:8080"
   - "8081:8081"
   container_name: rest
+  volumes:
+    - /src/:/restapi/
 h2o:  
   build: ./h2o
   ports:
