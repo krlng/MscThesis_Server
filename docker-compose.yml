@@ -2,6 +2,7 @@ data_db:
   image: busybox
   volumes:
     - /var/lib/postgresql
+  container_name: data_db
 db:
   build: ./postgis
   volumes_from: 
@@ -11,10 +12,12 @@ db:
   environment:
   - USERNAME=docker
   - PASS=docker
+  container_name: db
 data_geoserver:  
   image: busybox
   volumes:
     - /var/lib/geoserver:/opt/geoserver/data_dir
+  container_name: data_geo
 geoserver:
   image: kartoza/geoserver
   volumes_from: 
@@ -26,13 +29,16 @@ geoserver:
   environment:
   - USERNAME=docker
   - PASS=docker
+  container_name: geo
 rest:  
   build: restapi/.
   ports:
   - "80:8080"
   - "8081:8081"
+  container_name: rest
 h2o:  
   build: ./h2o
   ports:
   - "54321:54321"
   command: java -Xmx1g -jar /opt/h2o.jar
+  container_name: h2o

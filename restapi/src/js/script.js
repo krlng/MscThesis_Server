@@ -119,10 +119,11 @@
    delete o.date;
    o.timestamp = o.timestamp.yyyymmdd();
 
+   var DBConnection = $('#DBConnection').val();
 
    $.ajax({
        method: "POST",
-       url: "http://localhost:8081/api/generic/data_points",
+       url: DBConnection,
        data: o,
        success: function(response) {
          console.log(response);
