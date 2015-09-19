@@ -42,6 +42,7 @@ CREATE TABLE public.drives (
                 acc2 NUMERIC NOT NULL,
                 gyr1 NUMERIC NOT NULL,
                 gyr2 NUMERIC NOT NULL,
+                comment VARCHAR,
                 CONSTRAINT drives_pk PRIMARY KEY (id)
 );
 
@@ -146,5 +147,21 @@ INSERT INTO vehicles(id, vehicle_type, delta_above_ground, vehicle_height, vehic
 INSERT INTO drives(id, vehicle_id, speed_dectection_type, acc1, acc2, gyr1, gyr2)
     VALUES (0, 0, 0, 1, 2, 3, 4);
 
-
-
+CREATE OR REPLACE VIEW drive_stat AS 
+  SELECT d.id,
+    d.comment,
+    to_char(
+    (SELECT min(data_points.timestamp)
+    FROM data_points),'YYYY-MM-DD HH24:MI:SS') AS "Beginning",
+    max(p.lat) AS "Max Lat",
+    min(p.lat) AS "Min Lat",
+    max(p.lng) AS "Max Lng",
+    min(p.lng) AS "Min Lng",
+    max(p."timestamp") - min(p."timestamp") AS "Duration",
+    min(p.altitude) AS "Min. Altitude",
+    max(p.altitude) AS "Max. Altitude",
+    max(p.speed) AS "Max. Speed"
+   FROM drives d,
+    data_points p
+  WHERE p.drive_id = d.id
+  GROUP BY p.drive_id, d.id;

@@ -1,18 +1,13 @@
 var express = require('express');
 var path = require('path');
+var config = require('./config');
 
 // Constants
 var PORT = 8080;
-
-console.log('Parameters passen:')
-process.argv.forEach(function (val, index, array) {
-  console.log(index + ': ' + val);
-})
-
 // App
 var app = express();
 
-app.use(express.static(__dirname + '/src',{index: 'info.html'}))
+app.use(express.static(__dirname + '',{index: 'info.html'}))
 app.get('/', function (req, res) {
   res.sendfile(path.resolve('src/info.html'));
 });
@@ -50,7 +45,7 @@ server.use(cors.actual);
 pgRestify.initialize({
   server: server,
   //pgConfig: 'pg://nicokreiling:@localhost/testfahrten'
-  pgConfig: 'pg://docker:@192.168.99.100:5432/testfahrten'
+  pgConfig: 'pg://docker:@'+config.machine_ip+':5432/testfahrten'
   //pgConfig: 'pg://postgres/mysecretpassword@192.168.99.100:5432/postgres'
 }, function(err, pgRestifyInstance) {
 

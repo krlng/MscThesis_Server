@@ -11,7 +11,8 @@ RUN 	npm install -g bower
 RUN     git config --global url."https://".insteadOf git:// 
 
 # Bundle app source
-#COPY . /src
+COPY . /src
+VOLUME /src:/restapi
 
 # Install app dependencies
 WORKDIR /src
@@ -22,5 +23,6 @@ RUN ls
 RUN chmod 0755 setup.sh
 RUN ./setup.sh
 
+RUN echo $(docker-machine env default) > config.js
+
 EXPOSE  8080
-CMD ["node", "index.js"]

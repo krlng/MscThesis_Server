@@ -45,6 +45,7 @@ rest:
   - MACHINEIP=$(docker-machine ip default)
   volumes:
     - /src:/restapi
+  command: node /src/index.js
 h2o:  
   build: ./h2o
   ports:

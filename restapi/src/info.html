@@ -4,23 +4,23 @@
     <meta charset=utf-8 />
     <title>Overview of provided Services</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-    <script type="text/javascript" src="js/lib/jquery.js"></script>
+    <script type="text/javascript" src="src/js/lib/jquery.js"></script>
     <style>
       body { margin:0; padding:1em; }
       p {margin: 0.2em 0em}
       div {margin-bottom: 2em}
       b {display: inline-block; margin: 0 0.5em;}
-
     </style>
   </head>
   <body data-gclp-initialized="true" data-gistbox-initialized="true" style="">
-    <h1>Overview of the provided Services2</h1>
+    <h1>Overview of the provided Services</h1>
     <div>
       <h2>Database Connection</h2>
       <p><b>Host:</b><i><span class="host">localhost</span></i>,<b>Port:</b><i>5432</i>, <b>Username:</b><i>docker</i>, <b>Password:</b><i>docker</i></p>
-      <p><b>PSQL-Verbindung</b><code>psql -h <span class="host">localhost</span> -U docker -p 5432  postgres</p></code>
+      <p><b>PSQL-Verbindung</b><code>psql -h <span class="host">localhost</span> -U docker -p 5432  <span class="env_db">testfahrten</span></p></code>
       <p><b>Connection string</b><code> pg://docker:docker@<span class="host">localhost</span>/testfahrten</p></code>
-      <p><b>Online Interface</b><a href="http://localhost:81" target="_blank">Adminer</a></p> (Credentials same as for the database)
+      <p><b>Online Interface</b><a href="http://localhost:81" target="_blank">Adminer</a> (Credentials same as for the database)</p>
+      <p><b>R Connection</b><code>  con <- dbConnect(drv, dbname="testfahrten",host="<span class="host">localhost</span>",port=5432,user="docker",password="docker", )</code></p>
     </div>
     <div>
       <h2>REST API</h2>
@@ -34,7 +34,7 @@
     </div>
     <div>
       <h2>H2O Interface</h2>
-      <p><b>Flow:</b><a href="http://localhost:54321/" target="_blank">Flow-Web-Gui</a>"</p>
+      <p><b>Flow:</b><a href="http://localhost:54321/" target="_blank">Flow-Web-Gui</a></p>
 
       <b>R-Connection</b><br/>
       <code>library(h2o)<br/>
@@ -43,27 +43,30 @@ dockerH2O <- h2o.init(ip = "<span class="host">192.168.59.103</span>", port = 54
     </div> 
 
     <div>
-      <img src="img/GitHub-Mark-32px.png" style="float:left"/>
+      <img src="src/img/GitHub-Mark-32px.png" style="float:left"/>
       <a href="https://github.com/nik-ffm/MscThesis_Server" target="_blank" style="display: inline-block; padding: 0.5em">Assign Issues on Github</a>
     </div>
 
     <p style="text-align: right">Autor:  <a href="mailto:nico.kreiling@gmail.com">Nico Kreiling</a><br/> Stand: 15.9.2015</p>
 
     <script type="text/javascript">
-    var searchterm = 'localhost';
-    var ip = location.href.split('//')[1].split(':')[0].split('/')[0];
-    var search_length = searchterm.length;
+     $(function() {
+      $.getScript("config.js", function(){
 
-    $('a').filter(function(){
-      if ($(this).attr('href').indexOf(searchterm) >= 0){
-        $(this).attr("href",$(this).attr("href").replace(searchterm,ip));
-      } 
-    })
+          var searchterm = config.machine_ip;
+          var ip = location.href.split('//')[1].split(':')[0].split('/')[0];
+          var search_length = searchterm.length;
 
-    $('.host').filter(function(){
-      if ($(this).text().indexOf(searchterm) >= 0){
-        $(this).text($(this).text().replace(searchterm,ip));
-      } 
+          $('a').filter(function(){
+            if ($(this).attr('href').indexOf(searchterm) >= 0){
+              $(this).attr("href",$(this).attr("href").replace(searchterm,ip));
+            } 
+          })
+
+          $('.host').filter(function(){
+              $(this).text(searchterm);
+          })
+      })
     })
     </script>
   </body>
