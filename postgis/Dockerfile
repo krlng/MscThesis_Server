@@ -24,15 +24,16 @@ RUN apt-get -y install ca-certificates rpl pwgen
 # postgresql-9.3-postgis-2.1 : Depends: libgdal1h (>= 1.9.0) but it is not going to be installed
 #                              Recommends: postgis but it is not going to be installed
 RUN apt-get install -y postgresql-9.3-postgis-2.1 postgis 
+RUN apt-get install -y osm2pgsql
 
 # Open port 5432 so linked containers can see them
 EXPOSE 5432
 
 # Run any additional tasks here that are too tedious to put in
 # this dockerfile directly.
-ADD setup.sh /setup.sh
-RUN chmod 0755 /setup.sh
-RUN /setup.sh
+COPY ./setup /setup
+RUN chmod -R 0755 /setup
+RUN /setup/00_setup_conf.sh
 
 # We will run any commands in this when the container starts
 ADD start-postgis.sh /start-postgis.sh

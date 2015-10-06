@@ -119,6 +119,17 @@ else
     # Create a default db called 'gis' that you can use to get up and running quickly
     # It will be owned by the docker db user
     su - postgres -c "createdb -O $POSTGRES_USER -T template_postgis gis"
+
+
+    # Nico Extensione
+    echo "Create DB Testfahrten"
+    su - postgres -c "CREATE DATABASE testfahrten;"
+    echo "initialize tables for Testfahrten"
+    su - postgres -c 'psql -d testfahrten -a -f  "/setup/01_setup.sql"'
+    echo "Import osm2pgsql"
+    sh /setup/02_osm2pgsql.sh
+    echo "Create Content based on osm2pgsql"
+    su - postgres -c 'psql -a -f  "/setup/osm2pgsql.sql"'
 fi
 # This should show up in docker logs afterwards
 su - postgres -c "psql -l"
@@ -127,3 +138,6 @@ PID=`cat /var/run/postgresql/9.3-main.pid`
 kill -9 ${PID}
 echo "Postgres initialisation process completed .... restarting in foreground"
 su - postgres -c "$POSTGRES -D $DATADIR -c config_file=$CONF"
+
+
+
