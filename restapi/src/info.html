@@ -10,6 +10,7 @@
       p {margin: 0.2em 0em}
       div {margin-bottom: 2em}
       b {display: inline-block; margin: 0 0.5em;}
+      .password{display: none;}
     </style>
   </head>
   <body data-gclp-initialized="true" data-gistbox-initialized="true" style="">
@@ -20,7 +21,7 @@
       <p><b>PSQL-Verbindung</b><code>psql -h <span class="host">localhost</span> -U docker -p 5432  <span class="env_db">testfahrten</span></p></code>
       <p><b>Connection string</b><code> pg://docker:docker@<span class="host">localhost</span>/testfahrten</p></code>
       <p><b>Online Interface</b><a href="http://localhost:81" target="_blank">Adminer</a> (Credentials same as for the database)</p>
-      <p><b>R Connection</b><code>  con <- dbConnect(drv, dbname="testfahrten",host="<span class="host">localhost</span>",port=5432,user="docker",password="docker", )</code></p>
+      <p><b>R Connection</b><code>  con <- dbConnect(drv, dbname="testfahrten",host="<span class="host">localhost</span>",port=5432,user="docker"<span class="pw">,password="docker", </span>)</code></p>
     </div>
     <div>
       <h2>REST API</h2>
@@ -30,7 +31,7 @@
     <div>
       <h2>Geoserver</h2>
       <b></b><a href="http://localhost:8090/geoserver/web/" target="_blank">Web-GUI</a>
-      <p><b>User:</b><i>admin</i>,<b>password:</b><i>geoserver</i></p>
+      <p><b>User:</b><i>admin</i><span class="pw">,<b>password:</b><i>geoserver</i></p></span>
     </div>
     <div>
       <h2>H2O Interface</h2>
