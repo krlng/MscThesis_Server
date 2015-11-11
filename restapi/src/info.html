@@ -17,11 +17,11 @@
     <h1>Overview of the provided Services</h1>
     <div>
       <h2>Database Connection</h2>
-      <p><b>Host:</b><i><span class="host">localhost</span></i>,<b>Port:</b><i>5432</i>, <b>Username:</b><i>docker</i>, <b>Password:</b><i>docker</i></p>
+      <p><b>Host:</b><i><span class="host">localhost</span></i>,<b>Port:</b><i>5432</i>, <b>Username:</b><i>docker</i>, <span class="password"><b>Password:</b><i>docker</i></span></p>
       <p><b>PSQL-Verbindung</b><code>psql -h <span class="host">localhost</span> -U docker -p 5432  <span class="env_db">testfahrten</span></p></code>
       <p><b>Connection string</b><code> pg://docker:docker@<span class="host">localhost</span>/testfahrten</p></code>
       <p><b>Online Interface</b><a href="http://localhost:81" target="_blank">Adminer</a> (Credentials same as for the database)</p>
-      <p><b>R Connection</b><code>  con <- dbConnect(drv, dbname="testfahrten",host="<span class="host">localhost</span>",port=5432,user="docker"<span class="pw">,password="docker", </span>)</code></p>
+      <p><b>R Connection</b><code>  con <- dbConnect(drv, dbname="testfahrten",host="<span class="host">localhost</span>",port=5432,user="docker"<span class="password">,password="docker", </span>)</code></p>
     </div>
     <div>
       <h2>REST API</h2>
@@ -31,7 +31,7 @@
     <div>
       <h2>Geoserver</h2>
       <b></b><a href="http://localhost:8090/geoserver/web/" target="_blank">Web-GUI</a>
-      <p><b>User:</b><i>admin</i><span class="pw">,<b>password:</b><i>geoserver</i></p></span>
+      <p><b>User:</b><i>admin</i><span class="password">,<b>password:</b><i>geoserver</i></p></span>
     </div>
     <div>
       <h2>H2O Interface</h2>
